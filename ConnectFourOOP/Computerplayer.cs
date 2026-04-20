@@ -14,7 +14,20 @@ namespace ConnectFourOOP
 
         public override int GetMove()
         {
-            return rand.Next(0, 7);
+            int col;
+
+            do
+            {
+                col = rand.Next(0, 7);
+            } while (!IsValidColumn(col));
+
+            Console.WriteLine($"Computer chooses column {col + 1}");
+            return col;
+        }
+
+        private bool IsValidColumn(int col)
+        {
+            return col >= 0 && col < 7;
         }
     }
 }

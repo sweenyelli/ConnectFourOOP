@@ -53,7 +53,6 @@ namespace ConnectFourOOP
 
         public bool CheckWin(char symbol)
         {
-            // Horizontal
             for (int r = 0; r < 6; r++)
                 for (int c = 0; c < 4; c++)
                     if (grid[r, c] == symbol &&
@@ -62,7 +61,6 @@ namespace ConnectFourOOP
                         grid[r, c + 3] == symbol)
                         return true;
 
-            // Vertical
             for (int r = 0; r < 3; r++)
                 for (int c = 0; c < 7; c++)
                     if (grid[r, c] == symbol &&
@@ -71,7 +69,6 @@ namespace ConnectFourOOP
                         grid[r + 3, c] == symbol)
                         return true;
 
-            // Diagonal ES
             for (int r = 0; r < 3; r++)
                 for (int c = 0; c < 4; c++)
                     if (grid[r, c] == symbol &&
@@ -80,7 +77,6 @@ namespace ConnectFourOOP
                         grid[r + 3, c + 3] == symbol)
                         return true;
 
-            // Diagonal NE
             for (int r = 3; r < 6; r++)
                 for (int c = 0; c < 4; c++)
                     if (grid[r, c] == symbol &&
@@ -90,6 +86,15 @@ namespace ConnectFourOOP
                         return true;
 
             return false;
+        }
+        public bool IsFull()
+        {
+            for (int c = 0; c < 7; c++)
+            {
+                if (grid[0, c] == '#')
+                    return false;
+            }
+            return true;
         }
     }
 }
